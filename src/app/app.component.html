@@ -1,0 +1,40 @@
+<h1>Password Generator</h1>
+
+<div>
+  <label for="">Enter Length</label><br>
+  <input (input)="getLength($event.target.value)">
+</div>
+
+<div>
+  <label for="">Use Letters</label>
+  <input type="checkbox" (change)="onChangeUseLetters()">
+</div>
+
+<div>
+  <label for="">Use Numbers</label>
+  <input type="checkbox" (change)="onChangeUseNumbers()">
+</div>
+
+<div>
+  <label for="">Use Symbols</label>
+  <input type="checkbox" (change)="onChangeUseSymbols()">
+</div>
+
+<div>
+  <button 
+    class="btn-success" 
+    (click)="submit()" 
+    [disabled]="!(lengthOfPass && (includeLetters || includeNumbers || includeSymbols))"
+  >
+    Generate
+  </button>
+  <br><br>
+</div>
+
+<div *ngIf="password">
+  <label for="">Your Password:</label>
+  <input [value]="password">
+  <br>
+  <b>Your Password is {{password}}</b>
+</div>
+
